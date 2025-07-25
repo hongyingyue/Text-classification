@@ -1,0 +1,12 @@
+FROM nvcr.io/nvidia/pytorch:23.11-py3
+
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-dev \
+    tmux &&\
+    apt-get clean
+
+RUN pip install -U pip && \
+    pip install transformers==4.44.2 polars==0.20.18 sentencepiece==0.1.99 holidays==0.40 \    
+    datasets==2.19.2 huggingface-hub==0.23.2 peft==0.12.0 bitsandbytes==0.43.1 accelerate==0.32.1 trl==0.11.4
+
+WORKDIR /tmp/working

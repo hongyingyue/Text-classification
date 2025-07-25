@@ -1,0 +1,19 @@
+version: "2.3"
+services:
+  dl-task:
+    build:
+     context: .
+     dockerfile: ./docker/Dockerfile.torch
+    image: dl-task:latest
+    container_name: dl-task
+    shm_size: '32gb'
+    runtime: nvidia
+    environment:
+     - LD_LIBRARY_PATH=/usr/local/cuda/lib64
+    volumes:
+     - ./:/tmp/working
+    working_dir: /tmp/working
+    ports:
+     - 8888:8888
+    entrypoint: ""
+    command: jupyter lab --ip=0.0.0.0 --port 8888 --allow-root --NotebookApp.notebook_dir='/tmp/working' --no-browser --NotebookApp.token='12345'

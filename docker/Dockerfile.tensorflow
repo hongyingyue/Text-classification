@@ -1,0 +1,14 @@
+From tensorflow/tensorflow:2.18.1-gpu
+
+WORKDIR /tmp/working
+COPY requirements.txt .
+
+RUN apt-get update
+RUN apt-get install -y libgl1-mesa-dev wget vim
+
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir tfts jupyterlab
+
+EXPOSE 8888
+
+CMD ["bash"]

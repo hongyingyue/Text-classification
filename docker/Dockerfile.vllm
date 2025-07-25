@@ -1,0 +1,9 @@
+FROM vllm/vllm-openai:v0.9.2
+
+WORKDIR /tmp/working
+
+RUN pip install --no-cache-dir jupyterlab ipywidgets omegaconf hydra-core pandas scikit-learn matplotlib
+
+EXPOSE 8888
+
+CMD ["bash"]
