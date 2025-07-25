@@ -1,4 +1,4 @@
-# Deep Learning Hydra Template
+# Text classification with transformers
 ML training template, especially for DL tasks.
 
 ## Setup
@@ -11,6 +11,8 @@ docker compose up --build
 
 - use notebook, open `http://localhost:8888/?token=12345`
 
+## Pipeline
 
-## Wandb
-- https://wandb.ai/authorize
+- synthetic data
+- train
+- inference

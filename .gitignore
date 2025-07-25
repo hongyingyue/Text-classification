@@ -153,3 +153,4 @@ dmypy.json
 configs/local/default.yaml
 .env
 .autoenv
+.DS_Store

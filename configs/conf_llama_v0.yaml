@@ -1,0 +1,61 @@
+seed: 42
+use_wandb: false
+
+
+dataset:
+
+
+model:
+  name: qwen_v0
+  pretrained_model_name_or_path: Qwen/Qwen-7B-v0.5
+  tokenizer_name_or_path: Qwen/Qwen-7B-v0.5
+  model_type: qwen
+  config:
+    hidden_size: 4096
+    num_attention_heads: 32
+    num_hidden_layers: 32
+    intermediate_size: 11008
+    max_position_embeddings: 2048
+  
+
+
+train_params:
+  batch_size: 32
+  num_epochs: 3
+  gradient_accumulation_steps: 1
+  max_seq_length: 128
+  eval_steps: 100
+  save_steps: 500
+  logging_steps: 50
+  early_stopping_patience: 3
+  fp16: true
+
+
+optimizer:
+  type: adamw
+  lr: 5e-5
+  weight_decay: 0.01
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 1e-8
+  max_grad_norm: 1.0
+  scheduler:
+    name: cosine
+    warmup_steps: 0
+    warmup_ratio: 0.1
+    num_training_steps: 1000
+
+
+wandb:
+  project: text-classification
+  run_name: qwen_v0  
+  tags:
+    - text-classification
+    - qwen_v0
+
+hydra:
+  run:
+    dir: ../outputs/${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
+  output_subdir: null
+  hydra_logging: true
+  verbose: true
