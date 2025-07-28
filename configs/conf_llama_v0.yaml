@@ -1,8 +1,10 @@
 seed: 42
+debug: true
 use_wandb: false
 
 
 dataset:
+  df_name_or_path: ../data/input/train.csv
 
 
 model:
@@ -16,7 +18,6 @@ model:
     num_hidden_layers: 32
     intermediate_size: 11008
     max_position_embeddings: 2048
-  
 
 
 train_params:
@@ -50,12 +51,10 @@ wandb:
   project: text-classification
   run_name: qwen_v0  
   tags:
-    - text-classification
     - qwen_v0
 
 hydra:
   run:
     dir: ../outputs/${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
-  output_subdir: null
-  hydra_logging: true
-  verbose: true
+  output_subdir: .hydra
+  verbose: false
