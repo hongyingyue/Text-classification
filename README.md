@@ -15,4 +15,8 @@ docker compose up --build
 
 - synthetic data
 - train
+  - train deberta
+  - train llama
 - inference
+  - vllm inference
+  - batch inference
