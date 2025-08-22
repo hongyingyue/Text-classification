@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+packages.find.where = ["."]
+packages.find.include = ["code*"]
+
+[project]
+name = "text-classification"
+readme = "README.md"
+version = "0.0.1"
+authors = [
+    { name = "Hongying Yue", email = "yuehongyingyhy@gmail.com" }
+]
+description = "Text classification using Transformer and LLM"
+dependencies = [
+    "pyyaml",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "psutil",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "black",
+    "ruff",
+    "pylint",
+    "isort",
+]
+
+[tool.black]
+line-length = 120
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle error
+    "W",   # pycodestyle warning
+    "F",   # pyflakes
+    "A",   # flakes8-builtins
+    "COM", # flakes8-commas
+    "C4",  # flake8-comprehensions
+    "Q",   # flake8-quotes
+    "SIM", # flake8-simplify
+    "PTH", # flake8-use-pathlib
+    "I",   # isort
+    "N",   # pep8 naming
+    "UP",  # pyupgrade
+    "S",   # bandit
+]
+ignore = [
+    "COM812", # conflicts with the formatter
+]
